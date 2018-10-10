@@ -55,15 +55,15 @@ captures the computation that is performed in the summand:
 ```
 
 ```scheme
-(define (square a) = (* a a))
-(def (sumSqrs a b) = (sum square a b)
+(define (square a) (* a a))
+(define (sumSqrs a b) (sum square a b))
 ```
 
 Instead of defining the function `square` explicitly, we can also
 provide it to `sum` as an anonymous function given by a lambda
 abstraction term:
 
-```scala
+```scheme
 (define (sumInts a b) (sum (lambda (a) a) a b))
 (define (sumSqrs a b) (sum (lambda (a) (* a a)) a b))
 ```
@@ -73,7 +73,7 @@ abstraction term:
 Reconsider our definition of `sumInts` and `sumSqrs` in
 terms of `sum`:
 
-```scala
+```scheme
 (define (sumInts a b) (sum (lambda (a) a) a b))
 (define (sumSqrs a b) (sum (lambda (a) (* a a)) a b))
 ```
@@ -91,17 +91,17 @@ is to define the nested function explicitly by name using a nested
 
 ```scheme
 (define (sum f)
-  (let ((sumHelp a b)
+  (let ((sumHelp (lambda (a b)
         (if (< a b) 
             (+ (f a) ((sum f) (+ a 1) b))
-            0))
-    sumHelp)
+            0))))
+    sumHelp))
 ```
 
 Using the curried version of `sum`, the definition of `sumInts` and
 `sumSqrs` can be simplified like this:
 
-```scala
+```scheme
 (define sumInts (sum (lambda (a) a)))
 (define sumSqrs (sum (lambda (a) (* a a))))
 ```
@@ -111,7 +111,7 @@ is not recursive and is directly returned after being declared. We can
 thus simplify the definition of `sum` further by turning
 `sumHelp` into an anonymous function:
 
-```scala
+```scheme
 (define (sum f)
   (lambda (a b)
     (if (< a b) 
