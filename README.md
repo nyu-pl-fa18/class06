@@ -12,15 +12,13 @@ Higher-order functions provide a powerful mechanism for abstracting
 over common computation patterns in programs. This mechanism is
 particularly useful for designing libraries with rich interfaces
 that support callbacks to client code. We will study these mechanisms
-using the example of Scala's collection libraries.
+using the example of Scheme's list data type.
 
-As a warm-up,
-suppose that we want to write a function `sumInts`
-that takes the bounds `a` and `b` of a (half-open)
-interval `[a,b)` of integer numbers and computes the sum of the
-values in that interval. For example, `(sumInts 1 4)` should
-yield `6`. The following recursive implementation does what
-we want:
+As a warm-up, suppose that we want to write a function `sumInts` that
+takes the bounds `a` and `b` of a (half-open) interval `[a,b)` of
+integer numbers and computes the sum of the values in that
+interval. For example, `(sumInts 1 4)` should yield `6`. The following
+recursive implementation does what we want:
 
 ```scheme
 (define (sumInts a b)
@@ -221,7 +219,7 @@ the length of a list:
 The next function is more interesting, it takes two lists `l1` and
 `l2` and creates a new list by concatenating `l1` and `l2`.
 
-```scala
+```scheme
 (define (append xs ys)
   (match xs
     [(cons hd tl) (cons hd (append tl ys))]
@@ -369,7 +367,7 @@ Consider a list `xs` of `n` integer values `d1` to `dn`:
 Then unrolling the recursion of `sum` on `xs` yields the
 following computation
 
-```scala
+```scheme
 (+ d1 (+ d2 (+ ... (+ d2 0)...)))
 ```
 That is, in the *i*th recursive call, we add the current head `di` to
@@ -455,7 +453,7 @@ fold-right operations on lists. In particular, we can define
 Also the higher-order function `map` is just a special case of
 a fold-right:
 
-```scala
+```scheme
 (define (map op) (foldr (lambda (x ys) (cons (op x) ys)) '()))
 ```
 
@@ -464,12 +462,12 @@ elements in the input list and the result of the recursive computation
 in right-to-left order. We can also consider fold operations that
 perform the computation in left-to-right order:
 
-```scala
+```scheme
 (op (... (op (op z d1) d2) ...) dn)
 ```
 
 The corresponding computation tree then looks as follows:
-```scala
+```scheme
         op
        /  \
      ...  dn
@@ -498,7 +496,7 @@ The following function implements the fold-left operation on lists:
 Since addition is associative and commutative, we can alternatively
 define `sumList` using `foldl` instead of `foldr`:
 
-```scala
+```scheme
 (define sumList (foldl + 0))
 ```
 
@@ -509,7 +507,7 @@ types of fold operations can be used to implement a specific
 computation on lists if `op` is not commutative and associative. For
 example, we can express `reverse` in terms of a fold-left as follows:
 
-```scala
+```scheme
 (define reverse (foldl (lambda (xs x) (cons x xs)) '()))
 ```
 
