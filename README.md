@@ -540,3 +540,5 @@ The basic idea of higher-order functions such as `map`, `foldr`, and
 find these kinds of functions in most implementations of common data
 structures in the standard libraries of functional programming
 languages.
+
+The code can be found [here](https://github.com/nyu-pl-fa18/class06/blob/master/list-fun.scm).

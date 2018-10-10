@@ -62,9 +62,9 @@
 (incr-alt '(1 2 3))
 
 ; Summing the values in a list of numbers
-(define (sumList xs)
+(define (sum-list xs)
   (match xs
-    [(cons hd tl) (+ hd (sumList tl))]
+    [(cons hd tl) (+ hd (sum-list tl))]
     ['() 0]))
 
 (define (foldr op z)
@@ -73,8 +73,8 @@
       [(cons hd tl) (op hd ((foldr op z) tl))]
       ['() z])))
 
-; Alternative definition of sumList using foldr
-(define sumList-alt (foldr + 0))
+; Alternative definition of sum-list using foldr
+(define sum-list-alt (foldr + 0))
 
 (sumList-alt '(1 2 3))
 
