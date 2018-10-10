@@ -59,7 +59,7 @@ captures the computation that is performed in the summand:
 
 Instead of defining the function `square` explicitly, we can also
 provide it to `sum` as an anonymous function given by a lambda
-abstraction term:
+abstraction:
 
 ```scheme
 (define (sumInts a b) (sum (lambda (a) a) a b))
@@ -315,7 +315,7 @@ operation that is applied to each element in the list:
       ['() '()])))
 ```
 
-The `map` functions transforms the input list `xs` by applying an
+The `map` function transforms the input list `xs` by applying an
 operation `op` to each element in `xs`. Note that the order of the
 elements in the input list is preserved.
 
@@ -370,9 +370,9 @@ following computation
 ```scheme
 (+ d1 (+ d2 (+ ... (+ d2 0)...)))
 ```
-That is, in the *i*th recursive call, we add the current head `di` to
+That is, in the `i`-th recursive call, we add the current head `di` to
 the sum of the values in the current tail. Here, we consider the sum
-of an empty list `'()` to be 0. If we represent this
+of an empty list `'()` to be `0`. If we represent this
 computation as a tree, this tree looks as follows:
 
 ```scheme
@@ -409,7 +409,7 @@ is then represented by the following tree:
           dn  z
 ```
  
-or using Scheme syntax, by the term
+or using Scheme syntax, by the expression
 
 ```scheme
 (op d1 (op d2 (... (op dn z) ...)))
