@@ -249,6 +249,7 @@ The next function reverses a given list using tail-recursion:
 ```
 
 This is how the execution of this function looks like for this example:
+
 Function | `xs` | `rxs`
 --- | ---- | ---
 `reverse` | `'(3 4 1 2)` | -
