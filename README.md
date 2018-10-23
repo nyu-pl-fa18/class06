@@ -310,7 +310,7 @@ list:
 ```scheme
 (define (incr xs)
   (match xs
-    [(cons hd tl) (cons (+ hd 1) (incr xs))]
+    [(cons hd tl) (cons (+ hd 1) (incr tl))]
     ['() '()]))
 ```
 
